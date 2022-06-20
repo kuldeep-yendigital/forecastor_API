@@ -1,0 +1,122 @@
+{
+  "microService": {
+    "alertFreeze": {
+      "createUrl": "https://micro-api.prod.tmt.informa-labs.com/alert-freeze-service/create",
+      "activated": true
+    }
+  },
+  "acl": {
+    "whitelist": {
+      "user": [
+        "markku.t.makinen@nokia.com", 
+        "alfred.eiblmeier@nokia.com",
+        "rafal.nowicki@nokia.com",
+        "samuli.salorinne@nokia.com",
+        "arkadiusz.zachert@nokia.com",
+        "mavis.zhang@huawei.com",
+        "jiangmin1@huawei.com",
+        "mark.vosper@gmail.com",
+        "mint-accounts@fb.com"
+      ],
+      "domain": ["informa.com", "ovum.com"]
+    }
+  },
+  "memsql": {
+    "host": "10.3.188.185",
+    "user": "admin",
+    "password": "Forecast2018#",
+    "database": "Forecast_InMem",
+    "logQueries": false,
+    "multipleStatements": true
+  },
+  "cache": {
+    "query": true,
+    "dimensions": true
+  },
+  "redisCluster": {
+    "host": "tmt-prod-api-cache.euipw5.0001.euw1.cache.amazonaws.com",
+    "port": 6379,
+    "TTL": 86400
+  },
+  "logLevel": "error",
+  "auth": {
+    "allowedIssuers": [
+      "https://ovumforecaster.eu.auth0.com/"
+    ],
+    "audience": [
+      "https://api.forecaster.ovum.com/",
+      "https://forecaster-open-api.prod.tmt.informa-labs.com"
+    ],
+    "jwksUri": "https://ovumforecaster.eu.auth0.com/.well-known/jwks.json",
+    "auth0Uri": "https://ovumforecaster.eu.auth0.com",
+    "requiredScopes": [
+      "openid"
+    ],
+    "namespace": "https://api.ovumforecaster.com"
+  },
+  "bookmark": {
+    "bucket": "tmt-prod-bookmarks",
+    "s3BucketAllExports": "tmt-prod-exports-all",
+    "popular": 104457
+  },
+  "dashboard": {
+    "bucket": "tmt-prod-dashboards"
+  },
+  "s3PDF": {
+    "bucket": "tmt-prod-pdfs"
+  },
+  "cloudwatch": {
+    "logGroupName": "/tmt-prod/tmt-api",
+    "cloudWatchLogsOptions": {
+      "region": "eu-west-1"
+    }
+  },
+  "auth0": {
+    "managementApi": {
+      "authDomain": "ovumforecaster.eu.auth0.com",
+      "authClientId": "X9xbkG7P4mwlYuRjKfRsh9h0QuUdyOOR",
+      "authClientSecret": "CSE1-1QwodJwfmeVQ7L-QDxM-UTY2H6L4Xxavt9HYCMvU-l9aEyPggGBnmgeinmh",
+      "connection": "Ovum-Forecaster-PROD"
+    },
+    "openApi": {
+      "audience": "https://forecaster-open-api.prod.tmt.informa-labs.com",
+      "authDomain": "ovumforecaster.eu.auth0.com",
+      "authClientId": "LmDCdNQhRi9lgp5duLeu5HkRX9RivoOu",
+      "authClientSecret": "r4g1CFpkBXWx04nX7bBqdGSfRJqyYlLm8fY-8VcraH_Enyd_jwq4IiteEg_TEY0H",
+      "connection": "customer-api-forecaster-PROD"
+    }
+  },
+  "sams": {
+    "host": "https://api.sams.itm.semcs.net",
+    "productIds": [
+      "PT0106",
+      "PT0107",
+      "PT0108",
+      "PT0109",
+      "PT0110",
+      "PT0111",
+      "PT0112",
+      "PT0113",
+      "PT0114",
+      "PT0115",
+      "PT0116",
+      "PT0117",
+      "PT0118",
+      "PT0119",
+      "PT0120",
+      "PT0121",
+      "PT0122",
+      "PT0123",
+      "PT0135"
+    ]
+  },
+  "monitoring": {
+    "enabled": true,
+    "env": "prod",
+    "componentName": "tmt-api",
+    "plugins": [{
+      "name": "memory"
+    }]
+
+  }
+}

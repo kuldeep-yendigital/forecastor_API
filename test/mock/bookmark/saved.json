@@ -1,0 +1,25 @@
+{
+  "description": "A short description",
+  "payload": {
+    "query": {
+      "filters": {},
+      "compositeFilters": {
+        "dataset": ["TV Devices"],
+        "geography": ["Brazil"],
+        "metricindicator": ["Total"],
+        "metric": ["Unit Sales (Sell-through)"]
+      },
+      "range": {
+        "interval": "yearly",
+        "start": 1420070400000,
+        "end": 1672444800000
+      },
+      "sortedColumnId": "geographylevel1",
+      "sortDirection": "asc",
+      "columnKeys": ["geographylevel1", "geographylevel2", "serviceslevel1", "serviceslevel2", "serviceslevel3", "serviceslevel4", "serviceslevel5", "serviceslevel6", "technologylevel1", "technologylevel2", "technologylevel3", "technologylevel4", "technologylevel5", "technologylevel6", "devicelevel1", "devicelevel2", "devicelevel3", "devicelevel4", "devicelevel5", "devicelevel6", "dataset", "metriclevel1", "metriclevel2", "metricindicator", "currency", "unit"]
+    },
+    "pinned": []
+  },
+  "title": "Set top box test: uNIT SALES, Brazil",
+  "type": "saved"
+}

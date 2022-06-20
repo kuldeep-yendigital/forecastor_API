@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports: 
+      - "6379:6379"
+  db:
+    build: ./database
+    container_name: memsql-db
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - DB_BACKUP_BUCKET=${DB_BACKUP_BUCKET}
+      - DB_BACKUP_PATH=${DB_BACKUP_PATH}
+    ports: 
+      - "3306:3306"
+      - "9001:9000"
+  api:
+    build: .
+    depends_on:
+      - db
+      - redis
+    command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm run dev'
+    container_name: forecaster-api
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+    volumes:
+      - .:/var/www/forecaster-api
+      - node_modules:/var/www/forecaster-api/node_modules
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+      - "6969:6969"
+
+volumes:
+  node_modules:
